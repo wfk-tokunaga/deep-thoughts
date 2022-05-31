@@ -5,14 +5,8 @@ import { useQuery } from '@apollo/client';
 import { QUERY_THOUGHTS } from '../utils/queries';
 
 const Home = () => {
-  // use useQuery hook to make query request
   const { loading, data } = useQuery(QUERY_THOUGHTS);
-
-  // Optional chaining
-  // If data exists, store it in the thoughts constraint
-  // Else, save thoughts to be an empty array []
   const thoughts = data?.thoughts || [];
-  // console.log(thoughts);
 
   return (
     <main>
@@ -21,7 +15,10 @@ const Home = () => {
           {loading ? (
             <div>Loading...</div>
           ) : (
-            <ThoughtList thoughts={thoughts} title="Some Feed for Thought(s)..." />
+            <ThoughtList
+              thoughts={thoughts}
+              title="Some Feed for Thought(s)..."
+            />
           )}
         </div>
       </div>
